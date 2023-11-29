@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="./assets/favicon/manifest.json" />
+  <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+  <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
+  <meta name="msapplication-config" content="./assets/favicon/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Libs CSS -->
+  <link rel="stylesheet" href="./assets/css/libs.bundle.css" />
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="./assets/css/theme.bundle.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="/User/assets/css/cart.css" />
+
+  <!-- Title -->
+  <title>Đặc Sản Miền Tây</title>
+  <script>
+    window.onload = function () {
+      showCart();
+      show_order_user();
+    };
+  </script>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark navbar-expand-lg navbar-togglable fixed-top">
+    <div class="container">
+      <!-- Navbar brand (mobile) -->
+      <a class="navbar-brand d-lg-none" href="./index.html">Đặc sản miền tây</a>
+
+      <!-- Navbar toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar collapse -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- Navbar nav -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./product.html">Sản Phẩm</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./cart.html">Giỏ Hàng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./reservation.html">Đặt chỗ</a>
+          </li>
+        </ul>
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand d-none d-lg-flex mx-lg-auto" href="./product.html">
+          Đặc sản miền tây
+        </a>
+
+        <!-- Navbar nav -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./news-and-events.html">Tin tức</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contact-us.html">Liên Hệ</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./about-us.html">Về Chúng Tôi</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="justify-content-end fixed-top end-100 m-2" style="width: 150px">
+    <button id="logn_out" class="btn btn-warning" onclick="logn_out()">
+      Đăng Xuất
+    </button>
+  </div>
+  <div class="alert w-25 alert-success alert-dismissible fixed-bottom fade" style="left: 500px" id="alert_success">
+    <button type="button" class="btn-close" onclick="showoff('alert_success')"></button>
+    <strong>Đặt hàng thành công</strong>
+  </div>
+  <div class="alert w-25 alert-danger alert-dismissible fade fixed-bottom" style="left: 500px" id="alert_danger">
+    <button type="button" class="btn-close" onclick="showoff('alert_danger')"></button>
+    <strong>Nhập sai hoặc chưa đủ thông tin.</strong>
+  </div>
+  <!-- HEADER -->
+  <header data-jarallax data-speed=".8" style="background-image: url(assets/img/25.jpg)">
+    <div class="pt-10 pb-8 pt-md-15 pb-md-13 bg-black-50">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6 text-center">
+            <!-- Heading -->
+            <h1 class="display-6 fw-bold text-white">Giỏ hàng của bạn</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Lịch sử mua hàng</h4>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <table class="text-center table table-striped">
+            <thead>
+              <tr>
+                <th class="col-0">STT</th>
+                <th class="col-2">Tên khách hàng</th>
+                <th class="col-1">Email</th>
+                <th class="col-1">Sô điện thoại</th>
+                <th class="col-3">Địa chỉ</th>
+                <th class="col-1">Tổng tiền</th>
+                <th class="col-1">Trạng thái</th>
+                <th class="col-1"></th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title">Chi tiết hóa đơn</h3>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <table id="table_detail" class="text-center table table-striped">
+            <thead>
+              <tr>
+                <th class="col-2">Mã Sản Phẩm</th>
+                <th class="col-1">Hình Sản Phẩm</th>
+                <th class="col-5">Tên Sản Phẩm</th>
+                <th class="col-1">Số lượng</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="delete_detail_order()">
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="justify-content-end fixed-bottom end-100 m-2" style="width: 150px">
+    <h1 type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">
+      Đơn hàng đã đặt
+    </h1>
+  </div>
+  <main>
+    <div class="cartmain">
+      <div class="cartdetail">
+        <h1 class="m-4">Chi tiết giỏ hàng</h1>
+        <table id="cartDetail" class="text-center table table-striped">
+          <thead>
+            <tr>
+              <th class="col-1">Hình Sản Phẩm</th>
+              <th class="col-1">Tên Sản Phẩm</th>
+              <th class="col-1">Số lượng</th>
+              <th class="col-1">Giá</th>
+              <th class="col-1">Thành tiền</th>
+              <th class="col-1"></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+
+      <div class="shipaddress">
+        <h1>Thông tin giao hàng</h1>
+        <form action="" onsubmit="return false">
+          <div class="mb-3">
+            <label class="visually-hidden" for="user_name">Họ và tên</label>
+            <input class="form-control" id="user_name_cart" name="user_name" type="text" placeholder="Họ và tên"
+              required />
+          </div>
+          <div class="mb-3">
+            <label class="visually-hidden" for="user_email">Địa chỉ E-mail</label>
+            <input class="form-control" id="user_email_cart" name="user_email" type="email" placeholder="Địa chỉ E-mail"
+              required />
+          </div>
+          <div class="mb-3">
+            <label class="visually-hidden" for="phone">Số điện thoại</label>
+            <input class="form-control" id="phone_cart" name="user_email" type="text" placeholder="Số diện thoại"
+              maxlength="11" required />
+          </div>
+          <!-- Message -->
+          <div class="mb-3">
+            <label class="visually-hidden" for="address">Địa chỉ nhận hàng</label>
+            <textarea class="form-control" id="address_cart" name="address" rows="9" placeholder="Địa chỉ nhận hàng"
+              required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="visually" for="total_price">Tổng thành tiền =
+            </label>
+            <span id="bill_totalpretax"></span>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-warning" onclick="order()">
+              Đặt Hàng
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="py-7 py-md-9 bg-black">
+    <div class="container px-4">
+      <div class="row gx-7">
+        <div class="col-sm-4">
+
+          <!-- Heading -->
+          <h5 class="text-xs text-primary">
+            Về chúng tôi
+          </h5>
+
+          <!-- Text -->
+          <p class="mb-6">
+            Đây là một quán ăn lâu đời đã có từ những năm 1986. Mặc dù là quán ăn bình dân nhưng không gian quán rất
+            rộng rãi. Đặc biệt, nhà hàng miền Tây có vị trí thoáng mát, phục vụ cũng rất nhanh nhẹn và dễ mến.
+          </p>
+
+        </div>
+        <div class="col-sm-4">
+
+          <!-- Heading -->
+          <h5 class="text-xs text-primary">
+            Thông tin liên hệ
+          </h5>
+
+          <!-- List -->
+          <ul class="list-unstyled mb-6">
+            <li class="d-flex mb-2">
+              <div class="fas fa-map-marker-alt me-3 mt-2 fs-sm"></div>
+              Khu 2, Đ. 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT
+            </li>
+            <li class="d-flex mb-2">
+              <div class="fas fa-phone me-3 mt-2 fs-sm"></div>
+              +1 987 654 3210
+            </li>
+            <li class="d-flex">
+              <div class="far fa-envelope me-3 mt-2 fs-sm"></div> <a
+                href="mailto:admin@domain.com">abcB1234567@student.ctu.edu.vn</a>
+            </li>
+          </ul>
+
+        </div>
+        <div class="col-sm-4">
+
+          <!-- Heading -->
+          <h5 class="text-xs text-primary">
+            Giờ mở cửa
+          </h5>
+
+          <!-- Text -->
+          <div class="mb-3">
+            <div class="text-xs">Thứ 2 - Thứ 5</div>
+            <div class="font-serif">7:30 AM - 22:00 PM</div>
+          </div>
+
+          <!-- Text -->
+          <div class="mb-6">
+            <div class="text-xs">Thứ 6 - Chủ nhật</div>
+            <div class="font-serif">7:30 AM - 11:30 AM</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <!-- Copyright -->
+          <div class="d-flex align-items-center">
+            <hr class="hr-sm me-3" style="height: 1px;" />Đặc Sản Miền Tây &copy; 2023. All rights reserved.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/cart.js"></script>
+  <!-- Vendor JS -->
+  <script src="./assets/js/vendor.bundle.js"></script>
+
+  <!-- Theme JS -->
+  <script src="./assets/js/theme.bundle.js"></script>
+  <script>
+    function logn_out(code) {
+      localStorage.removeItem("newUser1");
+      window.location.assign("sign_in.html");
+    }
+  </script>
+</body>
+
+</html>

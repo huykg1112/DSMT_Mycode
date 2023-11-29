@@ -1,0 +1,15 @@
+.rounded-10 {
+  border-radius: 15px;
+}
+.form-control {
+  border-radius: 10px;
+}
+.btn {
+  border-radius: 10px;
+}
+body {
+  background-image: url(../img/15.jpg);
+}
+.navbar-brand:hover {
+  color: #ff9f1a;
+}

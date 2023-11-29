@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Booking Form HTML Template</title>
+
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/User/assets/css/bootstrap.min.css"
+    />
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="/User/assets/css/style.css" />
+
+    <script>
+      function frmValidate() {
+        var frm = document.forms["regfr"];
+        var soluong = frm.sl;
+        //số lượng là số dương
+        var t2 = parseInt(soluong.value);
+        if (isNaN(t2) || t2 < 1 || t2 > 50) {
+          alert("Hãy nhập số lượng 1->50");
+          soluong.focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="booking" class="section">
+      <div class="section-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="booking-cta">
+                <h1>Đặc sản miền tây</h1>
+                <p>
+                  Chúng tôi ở đây để mang lại những hương vị tuyệt vời nhất của
+                  miền tây sông nước
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+              <div class="booking-form">
+                <form action="product.html">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group was-validated">
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="hoten"
+                          required
+                        />
+                        <label class="form-label" for="hoten"
+                          >TÊN KHÁCH HÀNG</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="form-control" type="email" />
+                        <span class="form-label">Email</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group was-validated">
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="phone"
+                          required
+                          pattern="\d{10}"
+                        />
+                        <label class="form-label" for="phone"
+                          >SỐ ĐIỆN THOẠI</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="form-group">
+                        <select class="form-control">
+                          <option>Nhỏ</option>
+                          <option>Vừa</option>
+                          <option>Lớn</option>
+                        </select>
+                        <span class="form-label">LOẠI BÀN</span>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="form-group">
+                        <input
+                          class="form-control"
+                          type="number"
+                          id="sl"
+                          required
+                        />
+                        <span class="form-label">Số bàn</span>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="form-control" type="date" required />
+                        <span class="form-label">Ngày đến</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="form-control" type="time" required />
+                        <span class="form-label">Giờ đến</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-btn">
+                    <button class="submit-btn">Đặt ngay</button>
+                  </div>
+                </form>
+                <a class="btn btn-danger center-block" href="product.html"
+                  >Quay về</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/User/assets/js/jquery.min.js"></script>
+    <script>
+      $(".form-control").each(function () {
+        floatedLabel($(this));
+      });
+
+      $(".form-control").on("input", function () {
+        floatedLabel($(this));
+      });
+
+      function floatedLabel(input) {
+        var $field = input.closest(".form-group");
+        if (input.val()) {
+          $field.addClass("input-not-empty");
+        } else {
+          $field.removeClass("input-not-empty");
+        }
+      }
+    </script>
+    <script>
+      const storedUsers = localStorage.getItem("newUser1");
+      const newUser1 = storedUsers ? JSON.parse(storedUsers) : [];
+      if (newUser1 == 0) {
+        window.location.assign("sign_in.html");
+      }
+    </script>
+  </body>
+  <!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

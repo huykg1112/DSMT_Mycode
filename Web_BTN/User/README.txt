@@ -1,0 +1,1 @@
+Vui lòng chạy trang web với live server để có trải nghiệm tốt nhất và đầy đủ tính năng nhất

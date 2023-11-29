@@ -1,0 +1,34 @@
+
+.contact1-form {
+    min-width: 390px;
+  }
+  
+input.input1 {
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px;
+    border: 1px solid #000;
+  }
+
+  textarea.input1 {
+    min-height: 150px;
+    border-radius: 25px;
+    padding: 12px 30px;
+    border: 1px solid #000;
+  }
+  .wrap-input1 {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+  
+  .input1 {
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+  }

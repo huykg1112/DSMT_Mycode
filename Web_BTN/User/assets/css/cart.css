@@ -1,0 +1,12 @@
+main h1{
+    font-size: 24px;
+    text-align: center;
+    color: black;
+}
+.cartmain{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+.shipaddress{
+    margin: 20px;
+}
